@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	check_sep(char c, char *charset)
+static int	check_sep(char c, char *charset)
 {
 	while (*charset)
 	{
@@ -23,7 +23,7 @@ int	check_sep(char c, char *charset)
 	return (0);
 }
 
-int	size_array(char *str, char *charset)
+static int	size_array(char *str, char *charset)
 {
 	int	ct_str;
 	int	in_str;
@@ -44,7 +44,7 @@ int	size_array(char *str, char *charset)
 	return (ct_str);
 }
 
-int	size_str(char *str, int *k, char *charset)
+static int	size_str(char *str, int *k, char *charset)
 {
 	int	size;
 	int	count;
@@ -65,20 +65,7 @@ int	size_str(char *str, int *k, char *charset)
 	return (size);
 }
 
-void	ft_strncpy(char *dest, char *src, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		dest[i] = src [i];
-		i++;
-	}
-	dest[size] = '\0';
-}
-
-char	**ft_split(char const *str, char *charset)
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		k;
@@ -86,21 +73,21 @@ char	**ft_split(char const *str, char *charset)
 	int		str_sz;
 	char	**ptr;
 
-	ar_sz = size_array(str, charset);
+	ar_sz = size_array(s, c);
 	ptr = (char **) malloc((ar_sz + 1) * sizeof(char *));
 	if (ptr == NULL)
 		return (NULL);
 	i = 0;
 	k = 0;
-	while (i < ar_sz && *str)
+	while (i < ar_sz && *s)
 	{
-		str_sz = size_str(str, &k, charset);
+		str_sz = size_str(s, &k, c);
 		ptr[i] = (char *) malloc((str_sz + 1) * sizeof(char));
 		if (ptr[i] == NULL)
 			return (NULL);
-		str = str + k;
-		ft_strncpy(ptr[i], str, str_sz);
-		str = str + str_sz;
+		s = s + k;
+		ft_strncpy(ptr[i], s, str_sz);
+		s = s + str_sz;
 		i++;
 	}
 	ptr[ar_sz] = 0;
