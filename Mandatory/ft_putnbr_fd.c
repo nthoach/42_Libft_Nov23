@@ -21,7 +21,7 @@ void	ft_putnbr_fd(int n, int fd)
 	if (pos_n < 0)
 	{
 		write(fd, "-", 1);
-		pos_n = - pos_n;
+		pos_n = -pos_n;
 	}
 	if (pos_n < 10)
 	{
@@ -29,9 +29,5 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, &c, 1);
 	}
 	else
-	{
-		ft_putnbr_fd(pos_n/10, fd);
-		
-	}
-
+		ft_putnbr_fd(pos_n / 10, fd);
 }
