@@ -11,14 +11,49 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void *ft_calloc(size_t num_elem, size_t size)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	void *array;
+	t_list	*tmp;
 
-	array = malloc(num_elem*size);
-	if (array == NULL)
-		return (NULL);
-	ft_bzero(array, num_elem*size);
-	return (array);	
+	if (*lst && del)
+	{
+		while (*lst)
+		{
+			tmp = (*lst)->next;	
+			del((*lst)->content);
+			free(*lst);
+			*lst = tmp;					
+		}
+	}
 }
+
+// void del(void *str)
+// {
+// 	char	*s;
+
+// 	s = (char *)str;
+// 	while (*s)
+// 	{
+// 		*s = '\0';
+// 		s++;
+// 	}
+// }
+	
+
+//  int main()
+// {
+// 	t_list *lst = {ft_lstnew("okok")};
+// 	t_list *new;
+// 	char str[] = "kokoko";
+	
+// 	new = ft_lstnew(&str);
+// 	printf("\n\n > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the pointer of next %p\n", lst->next);
+// 	printf(" > the pointer of new %p\n", new);
+// 	ft_lstadd_back(&lst, new);
+// 	ft_lstclear(&lst, del);
+// 	printf(" > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the pointer of next %p\n", lst->next);
+// }

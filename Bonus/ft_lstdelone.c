@@ -12,13 +12,11 @@
 
 #include "libft.h"
 
-void *ft_calloc(size_t num_elem, size_t size)
+void	ftlstdelone(t_list *lst, void (*del)(void *))
 {
-	void *array;
-
-	array = malloc(num_elem*size);
-	if (array == NULL)
-		return (NULL);
-	ft_bzero(array, num_elem*size);
-	return (array);	
+	if (lst && del)
+	{
+		del(lst->content);
+		free(lst);
+	}
 }

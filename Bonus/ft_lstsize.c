@@ -11,14 +11,33 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void *ft_calloc(size_t num_elem, size_t size)
+int	ft_lstsize(t_list *lst)
 {
-	void *array;
+	int	n;
+	t_list	*tmp;
 
-	array = malloc(num_elem*size);
-	if (array == NULL)
-		return (NULL);
-	ft_bzero(array, num_elem*size);
-	return (array);	
+	if (!lst)
+		return (0);
+	n = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		n++;	
+	}
+	return (n);	
+}
+
+int	main()
+{
+	t_list *lst[1] = {ft_lstnew("akakaka")};
+	t_list *new;
+	
+	new = ft_lstnew("sdds");
+	ft_lstadd_front(lst, new);
+	new = ft_lstnew("sddsh");
+	ft_lstadd_front(lst, new);
+	printf("\n\n > lst %d\n",ft_lstsize(new));
+	return (0);
 }

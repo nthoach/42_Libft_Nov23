@@ -10,3 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include <stdio.h>
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*ptr;
+
+	if (new && *lst)
+	{
+		ptr = *lst;
+		while(ptr->next)
+			ptr = ptr->next;
+		ptr->next = new;
+	}
+}
+
+// int main()
+// {
+// 	t_list *lst = {ft_lstnew("akakaka")};
+// 	t_list *new;
+// 	char str[] = "oif";
+	
+// 	new = ft_lstnew(&str);
+// 	printf("\n\n > lst %p\n", (char *)lst);
+// 	printf(" > lst %p\n", lst->next);
+// 	printf(" > lst %p\n", new);
+// 	ft_lstadd_back(&lst, new);
+// 	printf("\n\n > lst %s\n", (char *)lst->content);
+// 	printf("\n\n > lst %s\n", (char *)lst->next->content);
+// }
