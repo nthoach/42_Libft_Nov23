@@ -11,14 +11,34 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-void *ft_calloc(size_t num_elem, size_t size)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	void *array;
-
-	array = malloc(num_elem*size);
-	if (array == NULL)
-		return (NULL);
-	ft_bzero(array, num_elem*size);
-	return (array);	
+	if (lst && f)
+	{
+		while(lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}	
+	}
 }
+
+// int main()
+// {
+
+// 	t_list *lst = {ft_lstnew("akakaka")};
+// 	t_list *new;
+// 	void *del;
+// 	del = '\0';
+// 	char str[] = "oif";
+		
+// 	new = ft_lstnew(&str);
+// 	printf("\n\n > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the content of next %s\n",(char *) new->content);
+// 	ft_lstadd_back(&lst, new);
+// 	ft_lstiter(lst, del);
+// 	printf(" > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the content of next %s\n", (char *) lst->next->content);
+// }
