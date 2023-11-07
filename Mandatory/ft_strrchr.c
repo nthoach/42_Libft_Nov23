@@ -10,19 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *str, int c)
-{
-	const char	*result;
+#include "libft.h"
 
-	result = 0;
-	while (*str)
+char	*ft_strrchr(const char *s, int c)
+{
+	int	len;
+
+	len = (int)ft_strlen(s);
+	s = s + len;
+	while (len >= 0)
 	{
-		if (*str == (char)c)
-		{
-			result = str;
-		}
-		str++;
+		if (*s == (unsigned char)c)
+			return ((char *)s);
+		s--;
+		len--;
 	}
-	result = (char *) result;
-	return (result);
+	return (NULL);
 }
+
+// char	*ft_strrchr(const char *str, int c)
+// {
+// 	char	*result;
+
+// 	if (!(char)c)
+// 		return (NULL);
+// 	result = 0;
+// 	while (*str)
+// 	{
+// 		if (*str == (char)c)
+// 			result = (char *)str;
+// 		str++;
+// 	}
+// 	return (result);
+// }

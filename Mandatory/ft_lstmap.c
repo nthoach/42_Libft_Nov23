@@ -11,15 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
 t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del)(void *))
 {
 	t_list	*list_new;
 	t_list	*node_new;
 
-	if (!lst || !(f && del))
+	if (!lst)
 		return (NULL);
 	list_new = NULL; 
 	while (lst)

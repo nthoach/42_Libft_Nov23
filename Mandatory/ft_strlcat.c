@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 size_t	ft_strlcat(char	*dest, const char	*src, size_t size)
 {
@@ -23,35 +22,29 @@ size_t	ft_strlcat(char	*dest, const char	*src, size_t size)
 	len_src = ft_strlen(src);
 	len_dest = ft_strlen(dest);
 	if (size <= len_dest)
+		return (size + len_src);
+	space = size - len_dest - 1;
+	i = 0;
+	while (i < space && src[i])
 	{
-		dest[size - 1] = '\0';
-		return (size - 1 + len_src);
+		dest[len_dest + i] = src[i];
+		i++;
 	}
-	else
-	{
-		space = size - len_dest - 1;
-		i = 0;
-		while (i < space && src[i])
-		{
-			dest[len_dest + i] = src[i];
-			i++;
-		}
-		dest[len_dest + i] = '\0';
-		return (len_dest + len_src);
-	}
+	dest[len_dest + i] = '\0';
+	return (len_dest + len_src);
 }
 
-int	main()
-{
-	char destination[5] = "Hello, ";
-	const char *source = "World!";
+// int	main()
+// {
+// 	char destination[5] = "Hello, ";
+// 	const char *source = "World!";
 
-	size_t buffer_size = sizeof(destination);
+// 	size_t buffer_size = sizeof(destination);
 
-	size_t result = ft_strlcat(destination, source, buffer_size);
+// 	size_t result = ft_strlcat(destination, source, buffer_size);
 
-	printf("Concatenated String: %s\n", destination);
-	printf("Resulting Length: %zu\n", result);
+// 	printf("Concatenated String: %s\n", destination);
+// 	printf("Resulting Length: %zu\n", result);
 
-	return 0;
-}
+// 	return 0;
+// }

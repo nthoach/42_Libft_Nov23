@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
-#include "stdlib.h"
 
 static int	check_sep(char c, char charset)
 {
@@ -21,7 +19,7 @@ static int	check_sep(char c, char charset)
 	return (0);
 }
 
-static int	size_array(char *str, char charset)
+static int	size_array(const char *str, char charset)
 {
 	int	ct_str;
 	int	in_str;
@@ -42,7 +40,7 @@ static int	size_array(char *str, char charset)
 	return (ct_str);
 }
 
-static int	size_str(char *str, int *k, char charset)
+static int	size_str(const char *str, int *k, char charset)
 {
 	int	size;
 	int	count;
@@ -63,7 +61,7 @@ static int	size_str(char *str, int *k, char charset)
 	return (size);
 }
 
-static void	ft_strncpy(char *dest, char *src, int sz_st)
+static void	ft_strncpy(char *dest, const char *src, int sz_st)
 {
 	dest += sz_st;
 	*dest = '\0';
@@ -106,18 +104,18 @@ char	**ft_split(char const *s, char c)
 	return (ptr);
 }
 
-int main() 
-{
-    const char *inputString = "This Mac Mini features a 5nm Apple"
-    "M2 Pro 64-bit SoC processor with 10 cores (4 performance cores,"
-    " 4 efficiency cores) clocked at 3.49 GHz.";
-    char **tokens = ft_split(inputString, ' ');
+// int main() 
+// {
+//     const char *inputString = "This Mac Mini features a 5nm Apple"
+//     "M2 Pro 64-bit SoC processor with 10 cores (4 performance cores,"
+//     " 4 efficiency cores) clocked at 3.49 GHz.";
+//     char **tokens = ft_split(inputString, ' ');
 
-    for (int i = 0; tokens[i] != NULL; i++) {
-        printf("Token %d: %s\n", i, tokens[i]);
-        free(tokens[i]); // Free individual tokens
-    }
-    free(tokens); // Free the array of tokens
+//     for (int i = 0; tokens[i] != NULL; i++) {
+//         printf("Token %d: %s\n", i, tokens[i]);
+//         free(tokens[i]); // Free individual tokens
+//     }
+//     free(tokens); // Free the array of tokens
 
-    return 0;
-}
+//     return 0;
+// }

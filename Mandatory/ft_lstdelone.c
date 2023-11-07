@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 12:30:31 by honguyen          #+#    #+#             */
-/*   Updated: 2023/10/30 15:01:43 by honguyen         ###   ########.fr       */
+/*   Created: 2023/10/31 16:53:57 by marvin            #+#    #+#             */
+/*   Updated: 2023/10/31 16:53:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	int		len;
-
-	len = 0;
-	while (*str)
+	if (lst && del)
 	{
-		str++;
-		len++;
+		del(lst->content);
+		free(lst);
 	}
-	return (len);
 }

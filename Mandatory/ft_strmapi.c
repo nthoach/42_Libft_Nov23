@@ -6,12 +6,11 @@
 /*   By: nthoach <nthoach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:34:40 by honguyen          #+#    #+#             */
-/*   Updated: 2023/11/05 15:24:07 by nthoach          ###   ########.fr       */
+/*   Updated: 2023/11/07 21:37:01 by nthoach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h> //
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -33,26 +32,26 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 }
 
 //
-char custom_map(unsigned int index, char c)
-{
-	if ( c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
-}
+// char custom_map(unsigned int index, char c)
+// {
+// 	if ( c >= 'a' && c <= 'z')
+// 		return (c - 32);
+// 	return (c);
+// }
 
-int	main()
-{
-	const char *inputString = "Hello, World";
-	char	*result = ft_strmapi(inputString, custom_map);
+// int	main()
+// {
+// 	const char *inputString = "Hello, World";
+// 	char	*result = ft_strmapi(inputString, custom_map);
 
-	if (result)
-	{
-		printf("Original String: %s\n", inputString);
-		printf("Mapped String: %s\n", result);
-		free(result);
-	}
+// 	if (result)
+// 	{
+// 		printf("Original String: %s\n", inputString);
+// 		printf("Mapped String: %s\n", result);
+// 		free(result);
+// 	}
 	
-	else
-		printf("Memory allocation failed.\n");
-	return (0);
-}
+// 	else
+// 		printf("Memory allocation failed.\n");
+// 	return (0);
+// }

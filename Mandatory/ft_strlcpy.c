@@ -12,13 +12,25 @@
 
 #include "libft.h"
 
-void	*ft_calloc(size_t num_elem, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	void	*array;
+	size_t	i;
 
-	array = (void *)malloc(num_elem * size);
-	if (array == NULL)
-		return (NULL);
-	ft_bzero(array, num_elem * size);
-	return (array);
+	i = 0;
+	if (dstsize == 0)
+	{
+		while (src[i])
+			i++;
+		return (i);
+	}
+	while (i < dstsize - 1 && src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (i < dstsize)
+		dst[i] = '\0';
+	while (src[i] != 0)
+		i++;
+	return (i);
 }

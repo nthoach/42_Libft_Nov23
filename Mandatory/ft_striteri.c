@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
@@ -27,19 +26,19 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	}
 }
 
-int	print_sample(int	index, char	*c)
-{
-	printf("Character at index %d: %c\n", index, *c);
-	return (0);
-}
+// int	print_sample(int	index, char	*c)
+// {
+// 	printf("Character at index %d: %c\n", index, *c);
+// 	return (0);
+// }
 
-int	main()
-{
-	char testString[] = "0123456 ";
+// int	main()
+// {
+// 	char testString[] = "0123456 ";
 
-	printf("Original String: %s\n", testString);
-   	printf("Applying the function:\n");
-	// Test the ft_striter function with the sample function
-	ft_striteri(testString, print_sample);
-    return 0;
-}
+// 	printf("Original String: %s\n", testString);
+//    	printf("Applying the function:\n");
+// 	// Test the ft_striter function with the sample function
+// 	ft_striteri(testString, print_sample);
+//     return 0;
+// }

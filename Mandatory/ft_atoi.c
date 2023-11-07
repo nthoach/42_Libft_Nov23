@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {
@@ -38,3 +39,23 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * value);
 }
+
+// int main()
+// {
+// 	char a[] = "	  +++--+-76543ffssf654";
+//     printf("%d\n", ft_atoi(a));
+//     printf("%d\n", atoi(a));
+
+//      char b[] = "+++--+-76543ffssf654";
+//     printf("%d\n", ft_atoi(b));
+//     printf("%d\n", atoi(b));
+//      char c[] = "     +76543ffssf654";
+//     printf("%d\n", ft_atoi(c));
+//     printf("%d\n", atoi(c));
+//      char d[] = "2147483649";
+//     printf("%d\n", ft_atoi(d));
+//     printf("%d\n", atoi(d));
+//          char e[] = "-2147483649";
+//     printf("%d\n", ft_atoi(e));
+//     printf("%d\n", atoi(e));
+// }

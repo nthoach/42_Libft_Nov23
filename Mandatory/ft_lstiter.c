@@ -13,31 +13,32 @@
 #include "libft.h"
 //#include <stdio.h>
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	n;
-	t_list	*tmp;
-
-	if (!lst)
-		return (0);
-	n = 0;
-	while (lst)
+	if (lst && f)
 	{
-		lst = lst->next;
-		n++;	
+		while(lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}	
 	}
-	return (n);	
 }
 
-// int	main()
+// int main()
 // {
-// 	t_list *lst[1] = {ft_lstnew("akakaka")};
+
+// 	t_list *lst = {ft_lstnew("akakaka")};
 // 	t_list *new;
-	
-// 	new = ft_lstnew("sdds");
-// 	ft_lstadd_front(lst, new);
-// 	new = ft_lstnew("sddsh");
-// 	ft_lstadd_front(lst, new);
-// 	printf("\n\n > lst %d\n",ft_lstsize(new));
-// 	return (0);
+// 	void *del;
+// 	del = '\0';
+// 	char str[] = "oif";
+		
+// 	new = ft_lstnew(&str);
+// 	printf("\n\n > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the content of next %s\n",(char *) new->content);
+// 	ft_lstadd_back(&lst, new);
+// 	ft_lstiter(lst, del);
+// 	printf(" > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the content of next %s\n", (char *) lst->next->content);
 // }

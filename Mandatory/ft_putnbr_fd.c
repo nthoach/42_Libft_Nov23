@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <assert.h> // For assertions
 #include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
@@ -39,10 +36,10 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 
-int	main()
-{
-	ft_putnbr_fd(INT64_MAX, 1);
-}
+// int	main()
+// {
+// 	ft_putnbr_fd(INT64_MAX, 1);
+// }
 // Prototype of the putnbr function (you need to provide this function)
 // void ft_putnbr(int n);
 

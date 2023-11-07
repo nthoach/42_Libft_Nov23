@@ -6,20 +6,17 @@
 /*   By: nthoach <nthoach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:34:37 by honguyen          #+#    #+#             */
-/*   Updated: 2023/11/05 15:49:26 by nthoach          ###   ########.fr       */
+/*   Updated: 2023/11/07 22:54:48 by nthoach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*j_s;
 	char	*ptr;
 	size_t	len_t;
-	size_t	i;
 
 	if (!s1 || !s2)
 		return (NULL);
@@ -36,19 +33,19 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (ptr);
 }
 
-int	main()
-{
-    char *s1 = "Hello, ";
-    char *s2 = "World!";
-    char *result = ft_strjoin(s1, s2);
+// int	main()
+// {
+//     char *s1 = "Hello, ";
+//     char *s2 = "World!";
+//     char *result = ft_strjoin(s1, s2);
 
-    if (result) 
-{
-        printf("Concatenated String: %s\n", result);
-}
-else {
-        printf("Memory allocation failed.\n");
-     }
-free(result); // Don't forget to free the dynamically allocated memory
-    return 0;
-}
+//     if (result) 
+// {
+//         printf("Concatenated String: %s\n", result);
+// }
+// else {
+//         printf("Memory allocation failed.\n");
+//      }
+// free(result); // Don't forget to free the dynamically allocated memory
+//     return 0;
+// }
