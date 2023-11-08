@@ -27,7 +27,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (new && *lst)
 	{
 		ptr = *lst;
-		while(ptr->next)
+		while (ptr->next)
 			ptr = ptr->next;
 		ptr->next = new;
 	}
@@ -38,7 +38,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 // 	t_list *lst = {ft_lstnew("akakaka")};
 // 	t_list *new;
 // 	char str[] = "oif";
-	
 // 	new = ft_lstnew(&str);
 // 	printf("\n\n > lst %p\n", (char *)lst);
 // 	printf(" > lst %p\n", lst->next);

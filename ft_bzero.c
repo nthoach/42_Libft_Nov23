@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-void	ftlstdelone(t_list *lst, void (*del)(void *))
+void	ft_bzero(void *s, size_t n)
 {
-	if (lst && del)
-	{
-		del(lst->content);
-		free(lst);
-	}
+	char *p;
+	
+	p = (char *)s;
+	while (n--)
+		*p++ = 0;
 }

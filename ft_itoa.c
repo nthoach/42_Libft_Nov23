@@ -68,12 +68,10 @@ char	*ft_itoa(int n)
 *	fails the function will return NULL.
 *	count number of digits to define the length of the string 
 */
-
 // static unsigned int	numberofdigits(int n)
 // {
 // 	unsigned int	n_digits;
 // 	unsigned int	n_positive;
-
 // 	n_digits = 0;
 // 	n_positive = n;
 // 	if (n < 0)
@@ -83,8 +81,6 @@ char	*ft_itoa(int n)
 // 	}
 // 	else if (!n)
 // 		n_digits = 1;
-
-
 // 	while (n_positive)
 // 	{
 // 		n_positive = n_positive / 10;
@@ -92,12 +88,10 @@ char	*ft_itoa(int n)
 // 	}		
 // 	return (n_digits);
 // }
-	
 // static char	*write_digits(char *str, int n, unsigned int len)
 // {
 // 	unsigned int	n_positive;
 // 	char	*s;
-	
 // 	s = str;
 // 	if (n < 0)
 // 	{
@@ -120,7 +114,6 @@ char	*ft_itoa(int n)
 // 	}
 // 	return (str);
 // }
-
 // char	*ft_itoa(int n)
 // {
 // 	char	*str;
@@ -134,11 +127,9 @@ char	*ft_itoa(int n)
 // 		return (NULL);
 // 	return(write_digits(str, n, len));	
 // }
-
 // int	main()
 // {
 // 	char *str;
-	
 // 	str = ft_itoa(-123456);
 // 	printf("%s\n", str);
 // 	str = ft_itoa(INT32_MIN);

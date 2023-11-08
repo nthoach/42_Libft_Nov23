@@ -70,7 +70,7 @@ static void	ft_strncpy(char *dest, const char *src, int sz_st)
 	while (sz_st)
 	{
 		*dest-- = *src--;
-		sz_st--; 
+		sz_st--;
 	}
 }
 
@@ -91,8 +91,8 @@ char	**ft_split(char const *s, char c)
 	while (i < ar_sz && *s)
 	{
 		str_sz = size_str(s, &k, c);
-		ptr[i] = (char *) malloc((str_sz + 1) * sizeof(char));
-		if (ptr[i] == NULL)
+		;
+		if (!(ptr[i] = (char *) malloc((str_sz + 1) * sizeof(char))))
 			return (NULL);
 		s = s + k;
 		ft_strncpy(ptr[i], s, str_sz);
@@ -100,7 +100,6 @@ char	**ft_split(char const *s, char c)
 		i++;
 	}
 	ptr[ar_sz] = 0;
-	
 	return (ptr);
 }
 
@@ -116,6 +115,5 @@ char	**ft_split(char const *s, char c)
 //         free(tokens[i]); // Free individual tokens
 //     }
 //     free(tokens); // Free the array of tokens
-
 //     return 0;
 // }

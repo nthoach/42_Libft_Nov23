@@ -26,7 +26,6 @@ t_list	*ft_lstlast(t_list *lst)
 // {
 // 	t_list *lst[1] = {ft_lstnew("orign")};
 // 	t_list *new;
-	
 // 	new = ft_lstnew("add_back");
 // 	ft_lstadd_back(lst, new);
 // 	new = ft_lstnew("add_front");

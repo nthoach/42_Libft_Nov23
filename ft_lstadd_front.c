@@ -11,25 +11,25 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+// #include <stdio.h>
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	if (new && lst)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }
 
 // int main()
 // {
-// 	t_list *lst[1] = {ft_lstnew("orign")};
+// 	t_list *lst[1] = {ft_lstnew("akakaka")};
 // 	t_list *new;
-	
-// 	new = ft_lstnew("add_back");
-// 	ft_lstadd_back(lst, new);
-// 	new = ft_lstnew("add_front");
+// 	new = ft_lstnew("sdds");
 // 	ft_lstadd_front(lst, new);
-// 	printf("\n\n > lst %s\n", ft_lstlast(new)->content);
+// 	printf("\n> lst %s\n", (char *)new->content);
+// 	printf("\n> lst %p\n", new->next);
+// 	printf("\n> lst %s\n", (char *)new->next->content);
+// 	printf("\n> lst %p\n", *lst);
 // }

@@ -16,24 +16,22 @@
 int	ft_lstsize(t_list *lst)
 {
 	int	n;
-	t_list	*tmp;
 
 	if (!lst)
 		return (0);
-	n = 0;
+			n = 0;
 	while (lst)
 	{
 		lst = lst->next;
-		n++;	
+		n++;
 	}
-	return (n);	
+	return (n);
 }
 
 // int	main()
 // {
 // 	t_list *lst[1] = {ft_lstnew("akakaka")};
 // 	t_list *new;
-	
 // 	new = ft_lstnew("sdds");
 // 	ft_lstadd_front(lst, new);
 // 	new = ft_lstnew("sddsh");

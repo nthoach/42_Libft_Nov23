@@ -13,30 +13,43 @@
 #include "libft.h"
 //#include <stdio.h>
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	n;
-	
-	if (!lst)
-		return (0);
-	n = 0;
-	while (lst)
+	t_list	*tmp;
+
+	if (*lst && del)
 	{
-		lst = lst->next;
-		n++;	
+		while (*lst)
+		{
+			tmp = (*lst)->next;
+			del((*lst)->content);
+			free(*lst);
+			*lst = tmp;					
+		}
 	}
-	return (n);	
 }
 
-// int	main()
+// void del(void *str)
 // {
-// 	t_list *lst[1] = {ft_lstnew("akakaka")};
+// 	char	*s;
+// 	s = (char *)str;
+// 	while (*s)
+// 	{
+// 		*s = '\0';
+// 		s++;
+// 	}
+// }
+//  int main()
+// {
+// 	t_list *lst = {ft_lstnew("okok")};
 // 	t_list *new;
-	
-// 	new = ft_lstnew("sdds");
-// 	ft_lstadd_front(lst, new);
-// 	new = ft_lstnew("sddsh");
-// 	ft_lstadd_front(lst, new);
-// 	printf("\n\n > lst %d\n",ft_lstsize(new));
-// 	return (0);
+// 	char str[] = "kokoko";
+// 	new = ft_lstnew(&str);
+// 	printf("\n\n > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the pointer of next %p\n", lst->next);
+// 	printf(" > the pointer of new %p\n", new);
+// 	ft_lstadd_back(&lst, new);
+// 	ft_lstclear(&lst, del);
+// 	printf(" > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the pointer of next %p\n", lst->next);
 // }

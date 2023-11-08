@@ -11,26 +11,32 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdio.h>
+//#include <stdio.h>
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (new && lst)
+	if (lst && f)
 	{
-		new->next = *lst;
-		*lst = new;
+		while (lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
 	}
 }
 
 // int main()
 // {
-// 	t_list *lst[1] = {ft_lstnew("akakaka")};
+// 	t_list *lst = {ft_lstnew("akakaka")};
 // 	t_list *new;
-	
-// 	new = ft_lstnew("sdds");
-// 	ft_lstadd_front(lst, new);
-// 	printf("\n> lst %s\n", (char *)new->content);
-// 	printf("\n> lst %p\n", new->next);
-// 	printf("\n> lst %s\n", (char *)new->next->content);
-// 	printf("\n> lst %p\n", *lst);
+// 	void *del;
+// 	del = '\0';
+// 	char str[] = "oif";		
+// 	new = ft_lstnew(&str);
+// 	printf("\n\n > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the content of next %s\n",(char *) new->content);
+// 	ft_lstadd_back(&lst, new);
+// 	ft_lstiter(lst, del);
+// 	printf(" > the content of lst %s\n", (char *)lst->content);
+// 	printf(" > the content of next %s\n", (char *) lst->next->content);
 // }
