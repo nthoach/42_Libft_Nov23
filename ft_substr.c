@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:34:50 by honguyen          #+#    #+#             */
-/*   Updated: 2023/11/09 18:59:23 by honguyen         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:47:55 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*string;
 	size_t	size;
 
-	if (s == NULL)
-		return (NULL);
-	if (ft_strlen(s) - 1 < start)
-		return (ft_strdup(""));
+	if (ft_strlen(s) <= start)
+	{
+		string = (char *)malloc(sizeof(char));
+		if (!string)
+			return (NULL);
+		*string = '\0';
+		return (string);
+	}
 	s = s + start;
 	size = ft_strlen(s);
 	if (size < len)
