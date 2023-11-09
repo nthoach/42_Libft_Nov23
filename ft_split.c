@@ -91,8 +91,8 @@ char	**ft_split(char const *s, char c)
 	while (i < ar_sz && *s)
 	{
 		str_sz = size_str(s, &k, c);
-		;
-		if (!(ptr[i] = (char *) malloc((str_sz + 1) * sizeof(char))))
+		ptr[i] = (char *) malloc((str_sz + 1) * sizeof(char));
+		if (!(ptr[i]))
 			return (NULL);
 		s = s + k;
 		ft_strncpy(ptr[i], s, str_sz);
@@ -109,7 +109,6 @@ char	**ft_split(char const *s, char c)
 //     "M2 Pro 64-bit SoC processor with 10 cores (4 performance cores,"
 //     " 4 efficiency cores) clocked at 3.49 GHz.";
 //     char **tokens = ft_split(inputString, ' ');
-
 //     for (int i = 0; tokens[i] != NULL; i++) {
 //         printf("Token %d: %s\n", i, tokens[i]);
 //         free(tokens[i]); // Free individual tokens

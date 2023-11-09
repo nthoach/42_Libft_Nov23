@@ -45,7 +45,6 @@ int	ft_atoi(const char *str)
 // 	char a[] = "	  +++--+-76543ffssf654";
 //     printf("%d\n", ft_atoi(a));
 //     printf("%d\n", atoi(a));
-
 //      char b[] = "+++--+-76543ffssf654";
 //     printf("%d\n", ft_atoi(b));
 //     printf("%d\n", atoi(b));
