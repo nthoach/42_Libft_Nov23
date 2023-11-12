@@ -14,11 +14,11 @@
 
 void	*ft_calloc(size_t num_elem, size_t size)
 {
-	void	*array;
+	unsigned char	*array;
 
-	array = (void *)malloc(num_elem * size);
+	array = (unsigned char *)malloc(num_elem * size);
 	if (array == NULL)
 		return (NULL);
 	ft_bzero(array, num_elem * size);
-	return (array);
+	return ((void *)array);
 }

@@ -12,48 +12,37 @@
 
 #include "libft.h"
 
-static int	check_sep(char c, char charset)
+static int	size_array(const char *str, char c)
 {
-	if (c == charset)
-		return (1);
-	return (0);
-}
+	int		sz_ar;
+	char	str_1;
 
-static int	size_array(const char *str, char charset)
-{
-	int	ct_str;
-	int	in_str;
-
-	ct_str = 0;
-	in_str = 0;
+	str_1 = c;
+	sz_ar = 0;
 	while (*str)
 	{
-		if ((in_str == 0) && (check_sep(*str, charset) == 0) && *str)
-		{
-			in_str = 1;
-			ct_str++;
-		}
-		if ((in_str == 1) && (check_sep(*str, charset) == 1) && *str)
-			in_str = 0;
+		if (str_1 == c && *str != c)
+			sz_ar++;
+		str_1 = *str;
 		str++;
 	}
-	return (ct_str);
+	return (sz_ar);
 }
 
-static int	size_str(const char *str, int *k, char charset)
+static int	size_str(const char *str, int *k, char c)
 {
 	int	size;
 	int	count;
 
 	count = 0;
 	size = 0;
-	while (check_sep(*str, charset) == 1 && *str)
+	while (*str == c && *str)
 	{
 		str++;
 		count++;
 	}
 	*k = count;
-	while (check_sep(*str, charset) == 0 && *str)
+	while (*str != c && *str)
 	{
 		size++;
 		str++;
@@ -61,47 +50,116 @@ static int	size_str(const char *str, int *k, char charset)
 	return (size);
 }
 
-static void	ft_strncpy(char *dest, const char *src, int sz_st)
+static void	free_loc(char **ptr, int i)
 {
-	dest += sz_st;
-	*dest = '\0';
-	dest--;
-	src += sz_st - 1;
-	while (sz_st)
+	while (i >= 0)
 	{
-		*dest-- = *src--;
-		sz_st--;
+		free(ptr[i]);
+		i--;
 	}
+	free(ptr);
+}
+
+static char	**array_copy(char **ptr, char const *s, int ar_sz, char c)
+{
+	int	i;
+	int	k;
+	int	str_sz;
+
+	i = 0;
+	k = 0;
+	while (i < ar_sz && *s)
+	{
+		str_sz = size_str(s, &k, c);
+		s += k;
+		ptr[i] = ft_substr(s, 0, str_sz);
+		if (!(ptr[i]))
+		{
+			free_loc(ptr, i - 1);
+			return (NULL);
+		}
+		s += str_sz;
+		i++;
+	}
+	ptr[ar_sz] = 0;
+	return (ptr);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		k;
 	int		ar_sz;
-	int		str_sz;
 	char	**ptr;
 
 	ar_sz = size_array(s, c);
 	ptr = (char **) malloc((ar_sz + 1) * sizeof(char *));
 	if (ptr == NULL)
 		return (NULL);
-	i = 0;
-	k = 0;
-	while (i < ar_sz && *s)
-	{
-		str_sz = size_str(s, &k, c);
-		ptr[i] = (char *) malloc((str_sz + 1) * sizeof(char));
-		if (!(ptr[i]))
-			return (NULL);
-		s = s + k;
-		ft_strncpy(ptr[i], s, str_sz);
-		s = s + str_sz;
-		i++;
-	}
-	ptr[ar_sz] = 0;
+	ptr = array_copy(ptr, s, ar_sz, c);
 	return (ptr);
 }
+
+// static int	size_str(const char *str, int *k, char c)
+// {
+// 	int	size;
+// 	int	count;
+
+// 	count = 0;
+// 	size = 0;
+// 	while (*str == c && *str)
+// 	{
+// 		str++;
+// 		count++;
+// 	}
+// 	*k = count;
+// 	while (*str != c && *str)
+// 	{
+// 		size++;
+// 		str++;
+// 	}
+// 	return (size);
+// }
+
+// static void	ft_strncpy(char *dest, const char *src, int sz_st)
+// {
+// 	dest += sz_st;
+// 	*dest = '\0';
+// 	dest--;
+// 	src += sz_st - 1;
+// 	while (sz_st)
+// 	{
+// 		*dest-- = *src--;
+// 		sz_st--;
+// 	}
+// }
+
+// char	**ft_split(char const *s, char c)
+// {
+// 	int		i;
+// 	int		k;
+// 	int		ar_sz;
+// 	int		str_sz;
+// 	char	**ptr;
+
+// 	ar_sz = size_array(s, c);
+// 	ptr = (char **) malloc((ar_sz + 1) * sizeof(char *));
+// 	if (ptr == NULL)
+// 		return (NULL);
+// 	i = 0;
+// 	k = 0;
+// 	while (i < ar_sz && *s)
+// 	{
+// 		str_sz = size_str(s, &k, c);
+// 		ptr[i] = (char *) malloc((str_sz + 1) * sizeof(char));
+// 		if (!(ptr[i]))
+// 			return (NULL);
+// 		s = s + k;
+// 		ft_strncpy(ptr[i], s, str_sz);
+// 		s = s + str_sz;
+// 		i++;
+// 	}
+// 	ptr[ar_sz] = 0;
+// 	return (ptr);
+// }
 
 // int main() 
 // {

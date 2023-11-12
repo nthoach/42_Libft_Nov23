@@ -15,8 +15,9 @@
 
 int	ft_atoi(const char *str)
 {
-	long	value;
-	long	sign;
+	int	value;
+	int	value_next;
+	int	sign;
 
 	value = 0;
 	sign = 1;
@@ -28,16 +29,15 @@ int	ft_atoi(const char *str)
 		str++;
 	while (*str >= '0' && *str <= '9')
 	{
-		if ((unsigned long) __LONG_MAX__ < (unsigned long)value * 10
-			+ (*str - '0') && sign == 1)
-			return (-1);
-		else if ((unsigned long) __LONG_MAX__ < (unsigned long)value * 10
-			+ (*str - '0') && sign == -1)
+		value_next = value * 10 + sign * (*str - '0');
+		if (value_next > value && sign == -1)
 			return (0);
-		value = value * 10 + *str - '0';
+		if (value_next < value && sign == 1)
+			return (-1);
+		value = value_next;
 		str++;
 	}
-	return (sign * value);
+	return (value);
 }
 
 // int main()

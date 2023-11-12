@@ -16,15 +16,12 @@ static int	ft_len(int long n)
 {
 	int	len;
 
-	len = 0;
 	if (n == 0)
 		return (1);
+	len = 0;
 	if (n < 0)
-	{
-		n = (-n);
-		len++;
-	}
-	while (n > 0)
+		len = 1;
+	while (n)
 	{
 		n = n / 10;
 		len++;
@@ -40,7 +37,7 @@ char	*ft_itoa(int n)
 
 	temp_n = n;
 	len = ft_len(temp_n);
-	str = malloc(sizeof(char) * (len + 1));
+	str = (char *)malloc((len + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	str[len] = '\0';
